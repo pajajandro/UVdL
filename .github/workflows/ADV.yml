@@ -9,9 +9,11 @@ jobs:
     steps:
       - name: Checkout
       uses: actions/checkout@2.3.1
-
-      - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Use node
+      uses: actions/setup-node@v2
       with:
-        branch: gh-pages # The  branch the action should deploy to.
-        folder: . # The folder the action should 
+        node-version: '12.13.0'
+        check-latest: true
+      - name: Install dependencies
+      run: npm ci
+    
